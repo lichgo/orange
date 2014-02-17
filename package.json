@@ -1,0 +1,21 @@
+{
+  "name": "Orange",
+  "version": "0.0.1",
+  "description": "Orange",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lichgo/orange.git"
+  },
+  "keywords": [
+    "orange"
+  ],
+  "author": "lichgo",
+  "license": "MIT",
+  "dependencies": {
+    "logfmt": "*",
+    "express": "*",
+    "swig": "*",
+    "mongoose": "*"
+  }
+}
