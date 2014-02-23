@@ -1,4 +1,9 @@
 var express = require('express'),
-	mongoose = require('mongoose'),
-	swig = require('swig');
+	config = require('./config'),
+	conn = require('./conn');
 
+var app = express();
+
+app.use(express.bodyParser());
+
+app.listen(config.port);
