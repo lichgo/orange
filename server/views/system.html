@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div id="message"></div>
+<form id="add-author-form">
+	<ul>
+		<li><label>Username</label><input type="text" name="username" id="username" /></li>
+		<li><label>Password</label><input type="text" name="password" id="password" /></li>
+		<li><label>Email</label><input type="email" name="email" id="email" /></li>
+		<li><label>Realname</label><input type="text" name="realname" id="realname" /></li>
+		<li><label>Avatar</label><input type="text" name="avatar" id="avatar" /></li>
+		<li><input type="submit" id="submit" value="submit" /></li>
+	</ul>
+</form>
+<script type="text/javascript">
+var message = $('#message');
+
+$('#submit').click(function(evt) {
+	$.ajax({
+		type: 'POST',
+		url: 'author',
+		data: {
+			username: $('#username').val(),
+			password: $('#password').val(),
+			email: $('#email').val(),
+			realname: $('#realname').val(),
+			avatar: $('#avatar').val()
+		},
+		success: function(data) { message.html(data) }
+	});
+	return false;
+});
+</script>
+{% endblock %}

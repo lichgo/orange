@@ -1,3 +1,3 @@
 var mongoose = require('mongoose');
 
-mongoose.connect( 'mongodb://localhost/orange' );
+mongoose.connect('mongodb://localhost/orange');

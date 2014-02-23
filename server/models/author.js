@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var AuthorSchema = new mongoose.Schema(
 	{
-		username: { type: String, unique: true }
-		pwssword: String,
+		username: { type: String, unique: true },
+		password: String,
 		email: { type: String, unique: true },
 		realname: String,
 		avatar: String,

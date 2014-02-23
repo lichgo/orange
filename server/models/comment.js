@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+	ObjectId = mongoose.Schema.ObjectId;
 
 var CommentSchema = new mongoose.Schema(
 	{
@@ -6,7 +7,7 @@ var CommentSchema = new mongoose.Schema(
 		email: String,
 		homepage: String,
 		content: String,
-		article_id: Objectid
+		article_id: ObjectId
 	},
 	{
 		collection: 'comments'

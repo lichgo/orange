@@ -3,15 +3,19 @@ var controllers = require('../controllers'),
 	authorCtrl = controllers.author,
 	commentCtrl = controllers.comment,
 	tagCtrl = controllers.tag,
-	indexCtrl = controllers.index,
+	systemCtrl = controllers.system,
+	homeCtrl = controllers.home,
 	dashboardCtrl = controllers.dashboard;
 
-function setRoutes(app) {
+function set(app) {
+	// system
+	app.get('/system', systemCtrl.home);
+
 	// index
-	app.get('/', indexCtrl.home);
-	app.get('/index', indexCtrl.home);
-	app.get('/home', indexCtrl.home);
-	app.get('/homepage', indexCtrl.home);
+	app.get('/', homeCtrl.home);
+	app.get('/index', homeCtrl.home);
+	app.get('/home', homeCtrl.home);
+	app.get('/homepage', homeCtrl.home);
 
 	// dashboard
 	app.get('/admin', dashboardCtrl.home);
@@ -19,4 +23,11 @@ function setRoutes(app) {
 	// author
 	app.get('/author/:id', authorCtrl.profile);
 	app.post('/author', authorCtrl.add);
+
+	// *
+	app.get('*', function(req, res, next) {
+		res.send(404);
+	});
 }
+
+exports.set = set;
