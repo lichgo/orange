@@ -10,8 +10,13 @@ function findById(id, fields, callback) {
 	Author.findById(id, fields, callback);
 }
 
-function profile(id, callback) {
-
+function profile(req, res, next) {
+	findById(req.params.id, {}, (function(res, next) {
+		return function(err, author) {
+			if (err) return next(err);
+			res.send(author);
+		}
+	})(res, next));
 }
 
 exports.add = add;
