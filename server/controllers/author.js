@@ -3,7 +3,12 @@ var models = require('../models'),
 
 function add(req, res, next) {
 	var author = new Author(req.body);
-	res.send(200);
+	author.save((function(res, next) {
+		return function(err, author) {
+			if (err) return next(err);
+			res.send(200);
+		}
+	})(res, next));
 }
 
 function findById(id, fields, callback) {
@@ -19,6 +24,16 @@ function profile(req, res, next) {
 	})(res, next));
 }
 
+function list(req, res, next) {
+	Author.find({},  (function(res, next) {
+		return function(err, authors) {
+			if (err) return next(err);
+			res.send(authors);
+		}
+	})(res, next));
+} 
+
 exports.add = add;
 exports.findById = findById;
 exports.profile = profile;
+exports.list = list;

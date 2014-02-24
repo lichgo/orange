@@ -21,7 +21,8 @@ function set(app) {
 	app.get('/admin', dashboardCtrl.home);
 
 	// author
-	app.get('/author/:id', authorCtrl.profile);
+	app.get('/author/profile/:id', authorCtrl.profile);
+	app.get('/author/list', authorCtrl.list);
 	app.post('/author', authorCtrl.add);
 
 	// *
