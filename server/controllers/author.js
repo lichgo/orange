@@ -24,6 +24,5 @@ function list(req, res, next) {
 }
 
 exports.add = add;
-exports.findById = findById;
 exports.profile = profile;
 exports.list = list;

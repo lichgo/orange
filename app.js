@@ -14,6 +14,7 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/server/views');
 
 app.use(express.bodyParser());
+app.use(express.static(__dirname + '/web'));
 
 routes.set(app);
 
