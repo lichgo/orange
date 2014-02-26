@@ -10,11 +10,23 @@ function add(req, res, next) {
 }
 
 function show(req, res, next) {
-	Article.findById(req.params.id, {}, function(err, article) {
+	var articleId = req.params.id;
+
+	Article.findById(articleId, {}, function(err, article) {
 		if (err) return res.send(err.err);
 		res.send(article);
 	})
 }
 
+function update(req, res, next) {
+	var articleId = req.params.id,
+		data = req.body;
+
+	Article.findOneAndUpdate({ _id: articleId }, data, {}, function(err, article) {
+		res.send(200);
+	});
+}
+
 exports.add = add;
 exports.show = show;
+exports.update = update;
