@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block body %}
+<div>Status: <span id="message"></span></div>
+<input type="text" id="article-title"></input>
 <div id="editor">
 <h2>Enjoy live editing (+markdown)</h2>
 
@@ -27,8 +29,24 @@
   <p>For more, please checkout: <a href="https://github.com/sofish/pen#readme" target="_blank">https://github.com/sofish/pen#readme</a>
   </p>
 </div>
+<div><button id="btn-publish">Publish</button>
 <script type="text/javascript" src="js/pen.js"></script>
 <script type="text/javascript">
 	var editor = new Pen('#editor');
+
+	$('#btn-publish').click(function(evt) {
+		$.ajax({
+			type: 'POST',
+			url: 'article',
+			data: {
+				title: $('#article-title').val().trim(),
+				content: $('#editor').html()
+			},
+			success: function(data) {
+				$('#message').html('Saved and published.');
+			}
+		});
+		return false;
+	});
 </script>
 {% endblock %}

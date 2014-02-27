@@ -25,6 +25,10 @@ function set(app) {
 	app.get('/author/list', authorCtrl.list);
 	app.post('/author', authorCtrl.add);
 
+	// article
+	app.post('/article', articleCtrl.add);
+	app.get('/article/:id', articleCtrl.show);
+
 	// *
 	app.get('*', function(req, res, next) {
 		res.send(404);

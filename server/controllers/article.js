@@ -14,7 +14,9 @@ function show(req, res, next) {
 
 	Article.findById(articleId, {}, function(err, article) {
 		if (err) return res.send(err.err);
-		res.send(article);
+		res.render('article', {
+			article: article
+		});
 	})
 }
 

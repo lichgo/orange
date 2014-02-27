@@ -1,0 +1,6 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>{{ article.title }}</h1>
+<article>{% autoescape false %}{{ article.content }}{% endautoescape %}</article>
+{% endblock %}
