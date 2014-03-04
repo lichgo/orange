@@ -20,6 +20,13 @@ function show(req, res, next) {
 	})
 }
 
+function list(req, res, next) {
+	Article.find({}, function(err, articles) {
+		if (err) return res.send(err.err);
+		res.send(articles);
+	});
+}
+
 function update(req, res, next) {
 	var articleId = req.params.id,
 		data = req.body;
@@ -32,3 +39,4 @@ function update(req, res, next) {
 exports.add = add;
 exports.show = show;
 exports.update = update;
+exports.list = list;
